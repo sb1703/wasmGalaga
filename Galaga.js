@@ -63,6 +63,7 @@ const totalImages = 11
 function checkImagesLoaded() {
   imagesLoaded++
   if (imagesLoaded === totalImages) {
+    console.log("All images loaded")
     Module.onRuntimeInitialized = function () {
       console.log("WASM module loaded")
       initializeGame(Module)

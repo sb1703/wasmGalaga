@@ -1,5 +1,11 @@
 build - 
 emcc -std=c++17 -g -gsource-map --bind -s WASM=1 -s EXPORTED_FUNCTIONS="['_checkBulletEnemyCollisions', '_checkShipEnemyCollisions', '_isColliding']" -s EXPORTED_RUNTIME_METHODS="['ccall', 'cwrap']" game_logic.cpp -o game_logic.js
 
+build with increased initial memory - 
+emcc -std=c++17 -g -gsource-map --bind -s WASM=1 -s INITIAL_MEMORY=33554432 -s EXPORTED_FUNCTIONS="['_checkBulletEnemyCollisions', '_checkShipEnemyCollisions', '_isColliding']" -s EXPORTED_RUNTIME_METHODS="['ccall', 'cwrap']" game_logic.cpp -o game_logic.js
+
+build with allowing memory growth - 
+emcc -std=c++17 -g -gsource-map --bind -s WASM=1 -s ALLOW_MEMORY_GROWTH=1 -s EXPORTED_FUNCTIONS="['_checkBulletEnemyCollisions', '_checkShipEnemyCollisions', '_isColliding']" -s EXPORTED_RUNTIME_METHODS="['ccall', 'cwrap']" game_logic.cpp -o game_logic.js
+
 run - 
 emrun --port 8080 index.html
